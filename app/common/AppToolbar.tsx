@@ -19,8 +19,14 @@ import { useCurrentUser, useSignIn } from "../core/auth.js";
 import { NotificationsMenu, UserMenu } from "../menus/index.js";
 import { ThemeButton } from "./ThemeButton.js";
 import { connectToMetaMask } from "../core/auth.js";
+import * as jdenticon from './jdenticon-node.js';
 
-   import Identicon from 'identicon.js';
+
+
+
+
+
+
 
 
 type AppToolbarProps = AppBarProps;
@@ -30,6 +36,10 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
   const menuAnchorRef = React.createRef<HTMLButtonElement>();
   const me = useCurrentUser();
   const signIn = useSignIn();
+  const address = "0x0000000000000000000000000000000000000000";
+
+
+  const walletIdenticon = getWalletIdenticon(address);
 
   const [anchorEl, setAnchorEl] = React.useState({
     userMenu: null as HTMLElement | null,
@@ -59,17 +69,26 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
 
  
 
-function getWalletIdenticon(address: string) {
-  const options = {
-    size: 32,
-    foreground: [0, 0, 0, 255],
-    background: [255, 255, 255, 255],
-    margin: 0.2,
-    format: 'svg'
-  };
-  const data = new Identicon(address, options).toString();
-  return `data:image/svg+xml;base64,${data}`;
-}
+  function getWalletIdenticon(address: string) {
+    // Set the size and value of the icon
+    const size = 32;
+    const value = address;
+  
+    // Create a canvas element to render the icon
+    const canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+  
+    // Render the icon on the canvas
+    jdenticon.update(canvas, value);
+
+
+  
+    // Return the icon as a data URI
+    return canvas.toDataURL();
+  }
+
+  
 
 
 

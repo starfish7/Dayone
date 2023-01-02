@@ -123,7 +123,7 @@ export function useAuthCallback<T extends AuthCallback>(
   );
 }
 
-async function connectToMetaMask() {
+export async function connectToMetaMask() {
   // Check if MetaMask is installed
   if (window.ethereum) {
     try {

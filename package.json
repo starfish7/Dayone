@@ -98,6 +98,10 @@
     "cwd": "./env"
   },
   "dependencies": {
-    "identicon.js": "^2.3.3"
+    "canvas": "^2.11.0",
+    "identicon": "^3.1.1",
+    "identicon.js": "^2.3.3",
+    "jdenticon": "^3.2.0",
+    "minidenticons": "^2.0.0"
   }
 }
