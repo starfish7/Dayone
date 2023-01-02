@@ -96,5 +96,8 @@
   },
   "envars": {
     "cwd": "./env"
+  },
+  "dependencies": {
+    "identicon.js": "^2.3.3"
   }
 }

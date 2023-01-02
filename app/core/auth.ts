@@ -15,6 +15,7 @@ import {
 export const SignInMethods: SignInMethod[] = [
   "google.com",
   "facebook.com",
+  "twitter.com",
   "anonymous",
 ];
 
@@ -120,6 +121,20 @@ export function useAuthCallback<T extends AuthCallback>(
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [openLoginDialog, ...(deps ?? [])]
   );
+}
+
+async function connectToMetaMask() {
+  // Check if MetaMask is installed
+  if (window.ethereum) {
+    try {
+      // Request account access if needed
+      await window.ethereum.enable();
+    } catch (error) {
+      console.error(error);
+    }
+  } else {
+    console.error("MetaMask is not installed");
+  }
 }
 
 type AuthCallbackParameters<T extends AuthCallback> = Parameters<T> extends [

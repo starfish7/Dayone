@@ -18,6 +18,10 @@ import { Link as NavLink } from "react-router-dom";
 import { useCurrentUser, useSignIn } from "../core/auth.js";
 import { NotificationsMenu, UserMenu } from "../menus/index.js";
 import { ThemeButton } from "./ThemeButton.js";
+import { connectToMetaMask } from "../core/auth.js";
+
+   import Identicon from 'identicon.js';
+
 
 type AppToolbarProps = AppBarProps;
 
@@ -53,6 +57,23 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
     signIn();
   }
 
+ 
+
+function getWalletIdenticon(address: string) {
+  const options = {
+    size: 32,
+    foreground: [0, 0, 0, 255],
+    background: [255, 255, 255, 255],
+    margin: 0.2,
+    format: 'svg'
+  };
+  const data = new Identicon(address, options).toString();
+  return `data:image/svg+xml;base64,${data}`;
+}
+
+
+
+
   return (
     <AppBar
       sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, ...sx }}
@@ -74,6 +95,82 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
         {/* Account related controls (icon buttons) */}
 
         {me !== undefined && <ThemeButton sx={{ mr: 1 }} />}
+
+
+
+
+      {/* MetaMask button */}
+      {window.ethereum ? (
+        <Chip
+          sx={{
+            height: 40,
+            borderRadius: 20,
+            fontWeight: 600,
+            backgroundColor: (x) =>
+              x.palette.mode === "light"
+                ? x.palette.grey[300]
+                : x.palette.grey[700],
+            ".MuiChip-avatar": { width: 32, height: 32 },
+          }}
+          avatar={
+            <Avatar
+              alt="Wallet address"
+              src={getWalletIdenticon(window.ethereum.selectedAddress)} // add a function here to generate the identicon
+            />
+          }
+          label={`...${window.ethereum.selectedAddress.slice(-4)}`}
+        />
+      ) : (
+        <Button
+          sx={{
+            mr: 1,
+            backgroundColor: (x) =>
+              x.palette.mode === "light"
+                ? x.palette.grey[300]
+                : x.palette.grey[700],
+            width: 40,
+            height: 40,
+            color: (x) => x.palette.text.primary,
+            "&:hover": {
+              backgroundColor: (x) =>
+                x.palette.mode === "light"
+                  ? x.palette.grey[400]
+                  : x.palette.grey[800],
+            },
+          }}
+          children="Connect to MetaMask"
+          onClick={connectToMetaMask} // add a function here to handle connecting to MetaMask
+        />
+      )}
+
+
+
+
+      {me && (
+        <IconButton
+          sx={{
+            marginLeft: (x) => x.spacing(1),
+            backgroundColor: (x) =>
+              x.palette.mode === "light"
+                ? x.palette.grey[300]
+                : x.palette.grey[700],
+            width: 40,
+            height: 40,
+          }}
+          children={<NotificationsNone />}
+          ref={menuAnchorRef}
+          onClick={openNotificationsMenu}
+        />
+      )}
+
+
+
+
+
+
+
+
+
 
         {me && (
           <Chip

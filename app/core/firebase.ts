@@ -11,6 +11,8 @@ import {
   OAuthCredential,
   signInAnonymously,
   signInWithPopup,
+  TwitterAuthProvider,
+
   type Auth,
   type UserCredential,
 } from "firebase/auth";
@@ -45,6 +47,12 @@ export function signIn(options: SignInOptions): Promise<UserCredential> {
   // https://developers.facebook.com/docs/permissions/reference/
   if (options.method === FacebookAuthProvider.PROVIDER_ID) {
     const provider = new FacebookAuthProvider();
+    provider.addScope("public_profile");
+    provider.addScope("email");
+    return signInWithPopup(auth, provider);
+  }
+  if (options.method === TwitterAuthProvider.PROVIDER_ID) {
+    const provider = new TwitterAuthProvider();
     provider.addScope("public_profile");
     provider.addScope("email");
     return signInWithPopup(auth, provider);
@@ -89,6 +97,10 @@ export async function getExistingAccountFromError(
     credential = FacebookAuthProvider.credentialFromError(error);
   }
 
+  if (method === TwitterAuthProvider.PROVIDER_ID) {
+    credential = TwitterAuthProvider.credentialFromError(error);
+  }
+
   return credential ? { email, credential, signInMethods } : undefined;
 }
 
@@ -97,6 +109,7 @@ export async function getExistingAccountFromError(
 export type SignInMethod =
   | typeof GoogleAuthProvider.PROVIDER_ID
   | typeof FacebookAuthProvider.PROVIDER_ID
+  | typeof TwitterAuthProvider.PROVIDER_ID
   | "anonymous";
 
 export type SignInOptions = {
