@@ -1511,6 +1511,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@download/blockies@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@download/blockies@npm:1.0.3"
+  checksum: 114252dba04eec43c0cc9bd49c3b54cdd14da0c6096292c8e3fa886812352a9d8c7eb06d87e28ef9ee4ae0f7cbd24b44e7cc8abd2825f81b5c8d44a084bd5896
+  languageName: node
+  linkType: hard
+
 "@emotion/babel-plugin@npm:^11.10.5":
   version: 11.10.5
   resolution: "@emotion/babel-plugin@npm:11.10.5"
@@ -3534,6 +3541,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/blockies@npm:^0":
+  version: 0.0.2
+  resolution: "@types/blockies@npm:0.0.2"
+  checksum: eca1a15ed6ceef95ad7756197fd9ac786eac85f8e70f070e7eaa1cfbd3b13a5bb32eb8851e736acd11b118f85fafca706380da531017bef8f43ed9e22eebf289
+  languageName: node
+  linkType: hard
+
 "@types/eslint@npm:^8.4.10":
   version: 8.4.10
   resolution: "@types/eslint@npm:8.4.10"
@@ -4345,6 +4359,13 @@ __metadata:
   version: 2.1.5
   resolution: "blake3-wasm@npm:2.1.5"
   checksum: 0f2da13db87c3c3d0c8c9ecc01b714643a188d6172f9006478345e5b0ab4d8a6f1839c0bb7ccb93248de2c2e5ddf33058e02648842fb7ca0b9404f2c62bbaa6a
+  languageName: node
+  linkType: hard
+
+"blockies@npm:^0.0.2":
+  version: 0.0.2
+  resolution: "blockies@npm:0.0.2"
+  checksum: ce5552ab43ed877ad2712a43ab27cd2dbf71276bdcc9b086e319be21b2b75a45af5ba8d480d4b59debec5651f5c3c2e7c5822176adbe95923a7a306b5bc12639
   languageName: node
   linkType: hard
 
@@ -9406,6 +9427,7 @@ __metadata:
     "@babel/preset-react": "npm:^7.18.6"
     "@babel/preset-typescript": "npm:^7.18.6"
     "@babel/register": "npm:^7.18.9"
+    "@download/blockies": "npm:^1.0.3"
     "@emotion/eslint-plugin": "npm:^11.10.0"
     "@jest/types": "npm:^29.3.1"
     "@rollup/plugin-babel": "npm:^6.0.3"
@@ -9415,6 +9437,7 @@ __metadata:
     "@types/babel__core": "npm:^7.1.20"
     "@types/babel__plugin-transform-runtime": "npm:^7.9.2"
     "@types/babel__preset-env": "npm:^7.9.2"
+    "@types/blockies": "npm:^0"
     "@types/eslint": "npm:^8.4.10"
     "@types/prettier": "npm:^2.7.2"
     "@typescript-eslint/eslint-plugin": "npm:^5.47.1"
@@ -9422,6 +9445,7 @@ __metadata:
     babel-jest: "npm:^29.3.1"
     babel-plugin-import: "npm:^1.13.5"
     babel-plugin-replace-import-extension: "npm:^1.1.3"
+    blockies: "npm:^0.0.2"
     canvas: "npm:^2.11.0"
     envars: "npm:^0.4.0"
     eslint: "npm:^8.30.0"

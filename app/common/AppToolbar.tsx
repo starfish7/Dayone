@@ -19,7 +19,6 @@ import { useCurrentUser, useSignIn } from "../core/auth.js";
 import { NotificationsMenu, UserMenu } from "../menus/index.js";
 import { ThemeButton } from "./ThemeButton.js";
 import { connectToMetaMask } from "../core/auth.js";
-import * as jdenticon from './jdenticon-node.js';
 
 
 
@@ -39,7 +38,7 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
   const address = "0x0000000000000000000000000000000000000000";
 
 
-  const walletIdenticon = getWalletIdenticon(address);
+ 
 
   const [anchorEl, setAnchorEl] = React.useState({
     userMenu: null as HTMLElement | null,
@@ -68,25 +67,9 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
   }
 
  
-
-  function getWalletIdenticon(address: string) {
-    // Set the size and value of the icon
-    const size = 32;
-    const value = address;
+ 
   
-    // Create a canvas element to render the icon
-    const canvas = document.createElement('canvas');
-    canvas.width = size;
-    canvas.height = size;
   
-    // Render the icon on the canvas
-    jdenticon.update(canvas, value);
-
-
-  
-    // Return the icon as a data URI
-    return canvas.toDataURL();
-  }
 
   
 
@@ -134,10 +117,10 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
           avatar={
             <Avatar
               alt="Wallet address"
-              src={getWalletIdenticon(window.ethereum.selectedAddress)} // add a function here to generate the identicon
             />
           }
-          label={`...${window.ethereum.selectedAddress.slice(-4)}`}
+          label={`...${(window.ethereum.selectedAddress || '').slice(-4)}`}
+
         />
       ) : (
         <Button

@@ -39,6 +39,7 @@
     "@types/babel__core": "^7.1.20",
     "@types/babel__plugin-transform-runtime": "^7.9.2",
     "@types/babel__preset-env": "^7.9.2",
+    "@types/blockies": "^0",
     "@types/eslint": "^8.4.10",
     "@types/prettier": "^2.7.2",
     "@typescript-eslint/eslint-plugin": "^5.47.1",
@@ -98,6 +99,8 @@
     "cwd": "./env"
   },
   "dependencies": {
+    "@download/blockies": "^1.0.3",
+    "blockies": "^0.0.2",
     "canvas": "^2.11.0",
     "identicon": "^3.1.1",
     "identicon.js": "^2.3.3",
