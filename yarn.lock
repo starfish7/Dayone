@@ -2784,6 +2784,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@metamask/onboarding@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@metamask/onboarding@npm:1.0.1"
+  dependencies:
+    bowser: "npm:^2.9.0"
+  checksum: dd5a2bf6f2c54c17ccc388ab8aa9614e1792cd001ddd0b8280c6139bc77604c8c0db88fc51385667a609bff9b2e5bc9f334e72ff73dcca30a300d9a56950b2d7
+  languageName: node
+  linkType: hard
+
 "@miniflare/cache@npm:2.10.0":
   version: 2.10.0
   resolution: "@miniflare/cache@npm:2.10.0"
@@ -4366,6 +4375,13 @@ __metadata:
   version: 0.0.2
   resolution: "blockies@npm:0.0.2"
   checksum: ce5552ab43ed877ad2712a43ab27cd2dbf71276bdcc9b086e319be21b2b75a45af5ba8d480d4b59debec5651f5c3c2e7c5822176adbe95923a7a306b5bc12639
+  languageName: node
+  linkType: hard
+
+"bowser@npm:^2.9.0":
+  version: 2.11.0
+  resolution: "bowser@npm:2.11.0"
+  checksum: 1665856cc9caa19ff2ec958d3f7e6485bf707f6250abf171483a30b814170d56b621a8cae639c191bf123de2ad62027248b55a1e7892bf03f4df65e2d3e4a5b9
   languageName: node
   linkType: hard
 
@@ -9430,6 +9446,7 @@ __metadata:
     "@download/blockies": "npm:^1.0.3"
     "@emotion/eslint-plugin": "npm:^11.10.0"
     "@jest/types": "npm:^29.3.1"
+    "@metamask/onboarding": "npm:^1.0.1"
     "@rollup/plugin-babel": "npm:^6.0.3"
     "@rollup/plugin-commonjs": "npm:^24.0.0"
     "@rollup/plugin-json": "npm:^6.0.0"

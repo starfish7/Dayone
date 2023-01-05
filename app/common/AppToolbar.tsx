@@ -19,12 +19,27 @@ import { useCurrentUser, useSignIn } from "../core/auth.js";
 import { NotificationsMenu, UserMenu } from "../menus/index.js";
 import { ThemeButton } from "./ThemeButton.js";
 import { connectToMetaMask } from "../core/auth.js";
+import MetaMaskOnboarding from '@metamask/onboarding'
+
+const currentUrl = new URL(window.location.href)
+const forwarderOrigin = currentUrl.hostname === 'localhost'
+  ? 'http://localhost:9010'
+  : undefined
+
+const isMetaMaskInstalled = () => {
+  const { ethereum } = window
+  return Boolean(ethereum && ethereum.isMetaMask)
+}
+
+// Basic Actions Section
+const onboardButton = document.getElementById('connectButton')
+const getAccountsButton = document.getElementById('getAccounts')
+const getAccountsResults = document.getElementById('getAccountsResult')
 
 
-
-
-
-
+function handleConnectToMetaMask() {
+  ethereum.request({ method: 'eth_requestAccounts' });
+}
 
 
 
@@ -98,52 +113,19 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
 
         {me !== undefined && <ThemeButton sx={{ mr: 1 }} />}
 
-
-
-
-      {/* MetaMask button */}
-      {window.ethereum ? (
-        <Chip
-          sx={{
-            height: 40,
-            borderRadius: 20,
-            fontWeight: 600,
-            backgroundColor: (x) =>
-              x.palette.mode === "light"
-                ? x.palette.grey[300]
-                : x.palette.grey[700],
-            ".MuiChip-avatar": { width: 32, height: 32 },
-          }}
-          avatar={
-            <Avatar
-              alt="Wallet address"
-            />
-          }
-          label={`...${(window.ethereum.selectedAddress || '').slice(-4)}`}
-
-        />
+        <div>
+      {isMetaMaskInstalled() ? (
+        <Button onClick={handleConnectToMetaMask}>Connect to Metamask</Button>
       ) : (
-        <Button
-          sx={{
-            mr: 1,
-            backgroundColor: (x) =>
-              x.palette.mode === "light"
-                ? x.palette.grey[300]
-                : x.palette.grey[700],
-            width: 40,
-            height: 40,
-            color: (x) => x.palette.text.primary,
-            "&:hover": {
-              backgroundColor: (x) =>
-                x.palette.mode === "light"
-                  ? x.palette.grey[400]
-                  : x.palette.grey[800],
-            },
-          }}
-          children="Connect to MetaMask"
-          onClick={connectToMetaMask} // add a function here to handle connecting to MetaMask
-        />
+        <Link href="https://metamask.io/" target="_blank">
+          Install MetaMask
+        </Link>
       )}
+    </div>
+
+        
+
+      
 
 
 
